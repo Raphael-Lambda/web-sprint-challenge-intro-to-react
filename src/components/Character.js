@@ -64,16 +64,16 @@ component
 =============================
 */
 const Character = ({char, details, displayDetails}) => {
-    const { name } = char
+    const { name, title } = char
     return(
         <FlexDivCol>
             <FlexDiv>
-                <h2>{name}</h2>
-                <Arrow onClick={() => {displayDetails(name)}}>&#60;</Arrow>
+                <h2>{name || title}</h2>
+                <Arrow onClick={() => {displayDetails(name || title)}}>&#60;</Arrow>
             </FlexDiv>
             {
                 Object.keys(char).map((item) => {
-                    if(item !== 'name' && name === details){
+                    if(item !== 'name' && item !== 'title' && (name || title) === details){
                         return(
                         <Detail key={item} property={item} value={char[item]} FlexDiv={FlexDiv}/>
                         )
