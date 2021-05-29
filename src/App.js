@@ -8,10 +8,15 @@ const App = () => {
 
   // create a slice of state for the data coming from the API
   const [ charList, setCharList ] = useState([])
-  const [details, setDetails] = useState(false);
+  const [details, setDetails] = useState('');
 
-  function displayDetails(){
-      setDetails(!details)
+  function displayDetails(name){
+      if(details === name){
+        setDetails('')
+      }
+      else{
+        setDetails(name)
+      }
   }
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -20,7 +25,6 @@ const App = () => {
   useEffect(() => {
     axios.get('https://swapi.dev/api/people')
     .then( response => {
-      console.log(response.data);
       setCharList(response.data);
     })
     .catch( err => console.log(err))
@@ -32,8 +36,7 @@ const App = () => {
       <Header />
       {
         charList? charList.map((char) => {
-          console.log(char)
-          return (<Character char={char} details={details} displayDetails={displayDetails}/>)}):null
+          return (<Character key={char.name} char={char} details={details} displayDetails={displayDetails}/>)}):null
       }
     </div>
   );
