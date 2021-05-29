@@ -1,5 +1,7 @@
 import React from 'react'
+import Detail from './Detail'
 import styled from 'styled-components'
+
 
 /* 
 =============================
@@ -24,7 +26,6 @@ const FlexDiv = styled.div`
             background: lightgrey;
         }
     }
-    
 `
 
 const FlexDivCol = styled.div`
@@ -57,17 +58,6 @@ const Arrow = styled.p`
     }
 `
 
-const Birth = styled.p`
-    border: 2px solid white;
-    border-radius: 3px;
-    padding: 0 20px;
-    margin-right: 10px;
-
-`
-const Property = styled.p`
-    font-size: 1.3em;
-`
-
 /* 
 =============================
 component
@@ -84,20 +74,14 @@ const Character = ({char, details, displayDetails}) => {
             {
                 Object.keys(char).map((item) => {
                     if(item !== 'name' && name === details){
-                        return(<FlexDiv key={item}>
-                            <Property>{item}</Property>
-                            <Birth>{char[item]}</Birth>
-                        </FlexDiv>)
+                        return(
+                        <Detail key={item} property={item} value={char[item]} FlexDiv={FlexDiv}/>
+                        )
                     }
                 })
             }
-
-                
-                {/* here goes all the details to display onclick */}
-        </FlexDivCol>
-
+            </FlexDivCol>
     )
 }
-
 
 export default Character
