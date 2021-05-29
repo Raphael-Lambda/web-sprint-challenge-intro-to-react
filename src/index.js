@@ -3,8 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { ThemeProvider } from 'styled-components'
+import ThemeObject from './theme/index'
 
 import { worker } from "./mocks/browser";
 worker.start();
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <ThemeProvider theme={ ThemeObject }>
+    <App />
+    </ThemeProvider>, 
+    document.getElementById("root"));
