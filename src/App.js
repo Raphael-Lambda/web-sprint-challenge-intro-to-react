@@ -9,6 +9,11 @@ const App = () => {
   // create a slice of state for the data coming from the API
   const [ charList, setCharList ] = useState([])
   const [details, setDetails] = useState('');
+  const [search, setSearch] = useState('');
+
+  function searchCharacter(evt){
+    setSearch(evt.target.value)
+  }
 
   function displayDetails(name){
       if(details === name){
@@ -33,10 +38,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header searchCharacter={searchCharacter}/>
       {
         charList? charList.map((char) => {
-          return (<Character key={char.name} char={char} details={details} displayDetails={displayDetails}/>)}):null
+          const charName = char.name.toLowerCase();
+          if(search === '' || charName.includes(search.toLowerCase())){
+          return (<Character key={char.name} char={char} details={details} displayDetails={displayDetails}/>)}}):null
       }
     </div>
   );
