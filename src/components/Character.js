@@ -9,7 +9,7 @@ styled Components
 =============================
 */
 const FlexDiv = styled.div`
-    max-height: 4.5rem;
+    min-height: 4.5rem;
     width: 85%;
     display: flex;
     flex-flow: row nowrap;
