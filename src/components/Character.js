@@ -38,7 +38,7 @@ const FlexDivCol = styled.div`
     margin: 15px 100px 0 100px;
     font-variant: small-caps;
     letter-spacing: 3px;
-    font-family: ${props => props.theme.font.family.codeSnippetStyle};
+    font-family: ${props => props.theme.codeSnippetStyle};
     transition: all .15s ease-out;
     :hover {
         transform: scale(1.02);
@@ -63,17 +63,16 @@ const Arrow = styled.p`
 component
 =============================
 */
-const Character = ({char, details, displayDetails}) => {
-    const { name, title } = char
+const Character = ({char, details, displayDetails, main}) => {
     return(
         <FlexDivCol>
             <FlexDiv>
-                <h2>{name || title}</h2>
-                <Arrow onClick={() => {displayDetails(name || title)}}>&#60;</Arrow>
+                <h2>{main}</h2>
+                <Arrow onClick={() => {displayDetails(main)}}>&#60;</Arrow>
             </FlexDiv>
             {
                 Object.keys(char).map((item) => {
-                    if(item !== 'name' && item !== 'title' && (name || title) === details){
+                    if(item !== 'name' && item !== 'title' && (main) === details){
                         return(
                         <Detail key={item} property={item} value={char[item]} FlexDiv={FlexDiv}/>
                         )

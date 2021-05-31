@@ -8,7 +8,7 @@ const HeaderH1 = styled.h1`
 const SearchBar = styled.input`
     height: 2rem;
     font-size: 1.5rem;
-    font-family: ${props => props.theme.font.family.codeSnippetStyle};
+    font-family: ${props => props.theme.codeSnippetStyle};
     margin: 0;
     border: 2px solid grey;
     border-radius: 3px;

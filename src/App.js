@@ -65,7 +65,7 @@ const App = () => {
           const main = char.name || char.title
           const charName = main.toLowerCase();
           if(search === '' || charName.includes(search.toLowerCase())){
-          return (<Character key={char.name || char.episode_id} char={char} details={details} displayDetails={displayDetails}/>)}}):null
+          return (<Character key={char.name || char.episode_id} char={char} details={details} displayDetails={displayDetails} main={main}/>)}}):null
       }
     </div>
   );
